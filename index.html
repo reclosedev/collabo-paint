@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Collabo-paint</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+        href="http://yandex.st/bootstrap/2.3.0/css/bootstrap.min.css">
+  <style type="text/css">
+  #container {
+    position: relative;
+  }
+
+  #imageView {
+    border: 1px solid lightblue;
+  }
+
+  #imageTemp {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+  }
+
+  .active-user {
+    background-color: lightblue;
+  }
+
+  img.highlighted {
+    border: 1px solid lightblue;
+  }
+  </style>
+  <script src="http://yandex.st/jquery/2.0.0/jquery.min.js"></script>
+  <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+  <script type="text/javascript" src="static/jscolor/jscolor.js"></script>
+</head>
+<body>
+<div class="container">
+  <h3>Collabo-paint</h3>
+  <small>Naive collaborative paint implementation</small>
+  <hr>
+  <div class="row">
+    <div class="span3">
+      <ul class="inline">
+        <li>
+          <a href="#" class="tool-change" data-tool="pencil">
+            <img src="static/img/stock_draw_freeform_line.png"/>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="tool-change" data-tool="line">
+            <img src="static/img/stock_draw_line.png"/>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="tool-change" data-tool="rect">
+            <img src="static/img/stock_draw_rectangle_unfilled.png"/>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="tool-change" data-tool="circle">
+            <img src="static/img/stock_draw_circle_unfilled.png"/>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="span4">
+      <input class="color input-small" value="000000" id="tool-color"/>
+      Width: <input type="range" class="input-small" value="000000" id="tool-width"  min="1" max="20" step="1"/>
+    </div>
+  </div>
+  <div class="row">
+    <div id="container" class="span7">
+      <canvas id="imageView" width="480" height="300"></canvas>
+    </div>
+    <div class="span4 users">
+      <form class="input-append" id="change-name">
+        <input type="text" id="user-name" class="span2" value=""/>
+        <button  class="btn" type="submit">Change name</button>
+      </form>
+      <div>
+        Users:
+        <ul id="users-list" class="unstyled"></ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+</div>
+<script type="text/javascript" src="static/collabo_paint.js"></script>
+</body>
+</html>
